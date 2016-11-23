@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Webpack Config
 var webpackConfig = {
@@ -22,8 +24,16 @@ var webpackConfig = {
         // your Angular Async Route paths relative to this root directory
       }
     ),
+    new HtmlWebpackPlugin({      
+      template: './src/index.template.ejs',
+      inject:'body'
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: './src/assets',
+        to: './assets'
+      }])
   ],
-
   module: {
     loaders: [
       // .ts files for TypeScript

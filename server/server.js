@@ -21,9 +21,9 @@ app.use(session({secret: 'xz_MEA2N'}));
 
 require('./passport')(app);
 
-app.use('/', express.static(__dirname + '/../client'));
-app.use('/node_modules', express.static(__dirname + '/../node_modules'));
+console.log(__dirname);
 
+app.use('/', express.static(__dirname + '/../dist'));
 app.use('/auth', authRoutes);
 app.use('/game', gameRoutes)
 app.use('/gamelib', gameLibraryRoutes)

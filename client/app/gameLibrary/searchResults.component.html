@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1>{{pageTitle}} <small></small></h1>
+</div>
+
+<div class="row bottom10">
+    <div class="col-sm-6 col-md-6">
+        <ul class="list-inline">
+            <li><strong>Platform</strong></li>
+            <li><a [class.active]="platformFilter == ''" (click)="updatePlatformFilter('')">All</a></li>
+            <li *ngFor="let p of platformList">
+                | <a [class.active]="platformFilter == p" (click)="updatePlatformFilter(p)">{{p}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-md-6">
+
+        <a class="dropdown-toggle pull-right" data-toggle="dropdown" id="viewList" title="order by">
+            <i class="glyphicon glyphicon-th"></i>
+        </a>
+
+
+        <ul class="dropdown-menu pull-right" style="padding:17px;" aria-labelledby="viewList">
+            <li><a (click)="orderby('gameTitle')">By title</a></li>
+            <li><a (click)="orderby('releaseDate')">By release date</a></li>
+            <li><a (click)="orderby('quantity')">By availablity</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row bottom10">
+
+    <div class="col-sm-6 col-md-4" *ngFor='let g of games | gamePlatformFilter : platformFilter | gameOrderFilter: orderbyFilter'>
+
+        <div class="thumbnail">
+            <a [routerLink]="['/gameDetail', g.isin]"><img src=" {{g.smallImageUrl}} " alt="{{g.gameTitle} " width="135 " height="160 " /></a>
+        </div>
+
+        <div class="caption ">
+            <h3>{{g.gameTitle}}</h3>
+
+            <p>{{g.platform}} - {{g.releaseDate}} - {{g.quantity}} / {{g.wishcount}}</p>
+            
+            <p><a (click)="addToRental(g.isin)">Add to rental</a></p>
+            
+        </div>
+    </div>
+
+</div>

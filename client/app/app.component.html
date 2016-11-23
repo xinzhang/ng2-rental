@@ -1,0 +1,105 @@
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <!--<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>-->
+
+            <div class="navbar-header">
+                <a href="/index.html" class="brand navbar-brand" title="MEA2N Starter Kit test">
+                    <span [myHighlight]="" [defaultColor]="'white'">MEA2N</span>
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li>
+                    <a [routerLink]="['/welcome']">Welcome</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/newRelease']">New Rentals</a>
+                </li>
+                <!--<li>
+                    <a (click)="showNotification();">show nofication</a>
+                </li>
+                <li>
+                    <a (click)="modal.open();">show modal</a>
+                </li>-->
+            </ul>
+
+            <!--<simple-notifications [options]="options"></simple-notifications>-->
+
+            <!--<modal #modal>
+                <modal-header [show-close]="true">
+                    <h4 class="modal-title">I'm a modal!</h4>
+                </modal-header>
+                <modal-body>
+                    Hello World!
+                </modal-body>
+                <modal-footer [show-default-buttons]="true"></modal-footer>
+            </modal>-->
+
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="authService.CurrentUser != null " class="dropdown" id="menuWelcome">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navWelcome">
+                        Welcome, {{authService.CurrentUser.email}}
+                    </a>
+                    <div class="dropdown-menu" style="padding:17px;">
+                        <a [routerLink]="['/myGames']" style="display:block">My Collections</a>
+                        <a [routerLink]="['/payment']" style="display:block">Payment</a>
+                        <a style="display:block">Market</a>
+                        <a style="display:block">Tracking</a>
+                    </div>
+                </li>
+                <li *ngIf="authService.CurrentUser!=null">
+                    <a (click)="signout()"><i class="glyphicon glyphicon-log-out"></i></a>
+                </li>
+                <li id="menuRegister" *ngIf="authService.CurrentUser==null">
+                    <a [routerLink]="['/register']" title="Fast and free sign up!" id="navRegister">
+                        <span class="glyphicon glyphicon-registration-mark"></span> Register
+                    </a>
+                </li>
+                <li class="dropdown" id="menuLogin" *ngIf="authService.CurrentUser==null">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </a>
+
+                    <div class="dropdown-menu" style="padding:17px;">
+                        <my-login (LOGIN_SUCCESS)='onLoginSuccess($event)'></my-login>
+                        <form class="form dropdown-login">
+                            <a [routerLink]="['/register']" title="Fast and free sign up!" id="btnNewUser" data-toggle="collapse">New User? Sign-up..</a>
+                        </form>
+                        <!--<form id="formRegister" class="form dropdown-login collapse">
+                            <input name="_csrf" id="token" type="hidden" value="4mUqko6l-1VDLKoFLqLZZ0o-A9x0IfRRMlkg">
+                            <input name="email" id="inputEmail" type="email" placeholder="Email" required="">
+                            <input name="username" id="inputUsername" type="text" placeholder="Username" pattern="^[a-z,A-Z,0-9,_]{6,15}$" data-valid-min="6"
+                                title="Choose a username" required=""><br>
+                            <input name="password" id="inputpassword" type="password" placeholder="Password" required="">
+                            <input name="verify" id="inputVerify" type="password" placeholder="Password (again)" required=""><br>
+                            <button type="button" id="btnRegister" class="btn">Sign Up</button>
+                        </form>-->
+                        <a style="display:block" data-toggle="modal" role="button" [routerLink]="['/forgotPassword']">Forgot username or password?</a>
+                        <a class="list-style" data-toggle="modal" role="button" href="#contactModal"><small>Need help? Contact us</small></a>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form input-append" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" [(ngModel)]="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="search()"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <router-outlet></router-outlet>
+</div>
