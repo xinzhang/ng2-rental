@@ -30,7 +30,6 @@ import {PaymentService} from './services/payment.service';
 import { GamePlatformFilterPipe } from './services/game-platform.filter';
 import { GameOrderFilterPipe } from './services/game-order.filter';
 
-
 @NgModule({
   declarations: [
     AppComponent,   

@@ -23,3 +23,4 @@ export const rootRouterConfig: Routes = [
     { path: 'search/:q', component: SearchResultsComponent },
     { path: 'gameDetail/:isin', component: GameDetailComponent }
 ];
+
