@@ -1,0 +1,64 @@
+<h3>{{pageTitle}}</h3>
+
+<div class="row bottom10">
+    <div class="col-sm-6 col-md-6">
+        <ul class="list-inline">
+            
+            <li>
+                <a [class.active]="currentTab == 'collection'" (click)="getMyGames('collection')">My collection</a>
+            </li>
+            <li>
+                | <a [class.active]="currentTab == 'wishlist'" (click)="getMyGames('wishlist')">Wish list</a>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<div class="row bottom10">
+    <div class="col-sm-6 col-md-6">
+        <ul class="list-inline">
+            <li><strong>Platform</strong></li>
+            <li><a [class.active]="platformFilter == ''" (click)="updatePlatformFilter('')">All</a></li>
+            <li *ngFor="let p of platformList">
+                | <a [class.active]="platformFilter == p" (click)="updatePlatformFilter(p)">{{p}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-md-6">
+
+        <a class="dropdown-toggle pull-right" data-toggle="dropdown" id="viewList" title="order by">
+            <i class="glyphicon glyphicon-th"></i>
+        </a>
+
+        <ul class="dropdown-menu pull-right" style="padding:17px;" aria-labelledby="viewList">
+            <li><a (click)="orderby('gameTitle')">By title</a></li>
+            <li><a (click)="orderby('releaseDate')">By release date</a></li>
+            <li><a (click)="orderby('quantity')">By availablity</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row bottom10">
+
+    <div class="col-sm-6 col-md-4" *ngFor='let g of games | gamePlatformFilter : platformFilter | gameOrderFilter: orderbyFilter'>
+
+        <div class="thumbnail">
+            <img src="{{g.smallImageUrl}}" alt="{{g.gameTitle}" />
+        </div>
+
+        <div class="caption">
+            <h3>{{g.gameTitle}} ({{g.platform}})</h3>
+            
+
+            <p *ngIf= "_authService.CurrentUser!=null">
+                
+                <a href="#">Share</a>
+                
+            </p>
+
+        </div>
+    </div>
+
+</div>

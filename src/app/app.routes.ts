@@ -1,26 +1,25 @@
 import { Routes } from '@angular/router';
 
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
-import { RepoBrowserComponent } from './github/repo-browser/repo-browser.component';
-import { RepoListComponent } from './github/repo-list/repo-list.component';
-import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
-import { ContactComponent } from './contact/contact.component';
+import {WelcomeComponent} from './home/welcome.component';
+import {NewReleaseComponent} from './home/newRelease.component';
+import {MyGamesComponent} from './home/myGames.component';
+import {SearchResultsComponent} from './gameLibrary/searchResults.component';
+import {GameDetailComponent} from './gameLibrary/gameDetail.component';
+
+import {RegisterComponent} from './auth/register.component';
+import {LoginComponent} from './auth/login.component';
+import {ForgotPasswordComponent} from './auth/forgotPassword.component';
+import {SetupPaymentComponent} from './auth/setupPayment.component';
+
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'github', component: RepoBrowserComponent,
-    children: [
-      { path: '', component: RepoListComponent },
-      { path: ':org', component: RepoListComponent,
-        children: [
-          { path: '', component: RepoDetailComponent },
-          { path: ':repo', component: RepoDetailComponent }
-        ]
-      }]
-  },
-  { path: 'contact', component: ContactComponent }
+     { path: '/welcome', component: WelcomeComponent},
+    { path: '/newRelease', component: NewReleaseComponent },
+    { path: '/myGames', component: MyGamesComponent },
+    { path: '/register', component: RegisterComponent },
+    { path: '/forgotPassword', component: ForgotPasswordComponent },
+    { path: '/payment', component: SetupPaymentComponent },
+    { path: '/search/:q', component: SearchResultsComponent },
+    { path: '/gameDetail/:isin', component: GameDetailComponent }
 ];
-
