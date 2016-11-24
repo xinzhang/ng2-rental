@@ -14,12 +14,12 @@ import {SetupPaymentComponent} from './auth/setupPayment.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-     { path: '/welcome', component: WelcomeComponent},
-    { path: '/newRelease', component: NewReleaseComponent },
-    { path: '/myGames', component: MyGamesComponent },
-    { path: '/register', component: RegisterComponent },
-    { path: '/forgotPassword', component: ForgotPasswordComponent },
-    { path: '/payment', component: SetupPaymentComponent },
-    { path: '/search/:q', component: SearchResultsComponent },
-    { path: '/gameDetail/:isin', component: GameDetailComponent }
+    { path: 'welcome', component: WelcomeComponent},
+    { path: 'newRelease', component: NewReleaseComponent },
+    { path: 'myGames', component: MyGamesComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'forgotPassword', component: ForgotPasswordComponent },
+    { path: 'payment', component: SetupPaymentComponent },
+    { path: 'search/:q', component: SearchResultsComponent },
+    { path: 'gameDetail/:isin', component: GameDetailComponent }
 ];

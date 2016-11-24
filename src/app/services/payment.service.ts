@@ -2,6 +2,7 @@
 import {Injectable} from '@angular/core';
 
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import 'rxjs';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -29,7 +30,4 @@ handleError(error: Response) {
         return Observable.throw(error.json().error || 'Server error');
     }
     
-
-
-
 }

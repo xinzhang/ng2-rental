@@ -2,6 +2,7 @@
 import {Injectable} from '@angular/core';
 
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import 'rxjs';
 import {Observable} from 'rxjs/Observable';
 import {IGame} from './game';
 
